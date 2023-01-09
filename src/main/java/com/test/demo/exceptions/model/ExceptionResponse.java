@@ -1,4 +1,4 @@
-package com.test.demo.exceptions;
+package com.test.demo.exceptions.model;
 
 import java.io.Serializable;
 import java.util.Date;
