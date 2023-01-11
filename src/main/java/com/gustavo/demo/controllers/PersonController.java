@@ -1,4 +1,4 @@
-package com.test.demo.controllers;
+package com.gustavo.demo.controllers;
 
 
 import java.util.List;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.test.demo.model.Person;
-import com.test.demo.services.PersonServices;
+import com.gustavo.demo.data.vo.v1.PersonVO;
+import com.gustavo.demo.services.PersonServices;
 
 
 @RestController
@@ -30,7 +30,7 @@ public class PersonController {
     @GetMapping(
         produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public List<Person> findAll() throws Exception  {
+    public List<PersonVO> findAll() throws Exception  {
         return service.findAll();
     }
 
@@ -38,7 +38,7 @@ public class PersonController {
         value = "/{id}", 
         produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Person findById( @PathVariable(value = "id") Long id ) throws Exception  {
+    public PersonVO findById( @PathVariable(value = "id") Long id ) throws Exception  {
         return service.findByID(id);
     }    
 
@@ -47,7 +47,7 @@ public class PersonController {
         consumes = MediaType.APPLICATION_JSON_VALUE, 
         produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Person create(@RequestBody Person person) throws Exception  {
+    public PersonVO create(@RequestBody PersonVO person) throws Exception  {
         return service.create(person);
     }
 
@@ -56,7 +56,7 @@ public class PersonController {
         consumes = MediaType.APPLICATION_JSON_VALUE, 
         produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Person update(@RequestBody Person person) throws Exception  {
+    public PersonVO update(@RequestBody PersonVO person) throws Exception  {
         return service.update(person);
     }
 
