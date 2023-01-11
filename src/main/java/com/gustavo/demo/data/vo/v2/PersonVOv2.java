@@ -1,8 +1,9 @@
-package com.gustavo.demo.data.vo.v1;
+package com.gustavo.demo.data.vo.v2;
 
 import java.io.Serializable;
+import java.util.Date;
 
-public class PersonVO implements Serializable{
+public class PersonVOv2 implements Serializable{
 
     private static final long serialVersionUID = 1L;
     
@@ -16,7 +17,14 @@ public class PersonVO implements Serializable{
     
     private String gender;
 
-    public PersonVO() {
+    private Date birthday;
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     public Long getId() {
@@ -49,6 +57,10 @@ public class PersonVO implements Serializable{
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    public PersonVOv2() {
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -68,7 +80,7 @@ public class PersonVO implements Serializable{
             return false;
         if (getClass() != obj.getClass())
             return false;
-        PersonVO other = (PersonVO) obj;
+        PersonVOv2 other = (PersonVOv2) obj;
         if (id == null) {
             if (other.id != null)
                 return false;

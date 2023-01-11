@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.gustavo.demo.data.vo.v1.PersonVO;
+import com.gustavo.demo.data.vo.v1.PersonVOv1;
 import com.gustavo.demo.mapper.DozerMapper;
 import com.gustavo.demo.model.Person;
 import com.gustavo.demo.unittests.mapper.mocks.MockPerson;
@@ -23,7 +23,7 @@ public class DozerConverterTest {
 
     @Test
     public void parseEntityToVOTest() {
-        PersonVO output = DozerMapper.parseObject(inputObject.mockEntity(), PersonVO.class);
+        PersonVOv1 output = DozerMapper.parseObject(inputObject.mockEntity(), PersonVOv1.class);
         assertEquals(Long.valueOf(0L), output.getId());
         assertEquals("First Name Test0", output.getFirstName());
         assertEquals("Last Name Test0", output.getLastName());
@@ -33,8 +33,8 @@ public class DozerConverterTest {
 
     @Test
     public void parseEntityListToVOListTest() {
-        List<PersonVO> outputList = DozerMapper.parseListObjects(inputObject.mockEntityList(), PersonVO.class);
-        PersonVO outputZero = outputList.get(0);
+        List<PersonVOv1> outputList = DozerMapper.parseListObjects(inputObject.mockEntityList(), PersonVOv1.class);
+        PersonVOv1 outputZero = outputList.get(0);
         
         assertEquals(Long.valueOf(0L), outputZero.getId());
         assertEquals("First Name Test0", outputZero.getFirstName());
@@ -42,7 +42,7 @@ public class DozerConverterTest {
         assertEquals("Addres Test0", outputZero.getAddress());
         assertEquals("Male", outputZero.getGender());
         
-        PersonVO outputSeven = outputList.get(7);
+        PersonVOv1 outputSeven = outputList.get(7);
         
         assertEquals(Long.valueOf(7L), outputSeven.getId());
         assertEquals("First Name Test7", outputSeven.getFirstName());
@@ -50,7 +50,7 @@ public class DozerConverterTest {
         assertEquals("Addres Test7", outputSeven.getAddress());
         assertEquals("Female", outputSeven.getGender());
         
-        PersonVO outputTwelve = outputList.get(12);
+        PersonVOv1 outputTwelve = outputList.get(12);
         
         assertEquals(Long.valueOf(12L), outputTwelve.getId());
         assertEquals("First Name Test12", outputTwelve.getFirstName());

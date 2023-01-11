@@ -3,7 +3,7 @@ package com.gustavo.demo.unittests.mapper.mocks;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.gustavo.demo.data.vo.v1.PersonVO;
+import com.gustavo.demo.data.vo.v1.PersonVOv1;
 import com.gustavo.demo.model.Person;
 
 
@@ -14,7 +14,7 @@ public class MockPerson {
         return mockEntity(0);
     }
     
-    public PersonVO mockVO() {
+    public PersonVOv1 mockVO() {
         return mockVO(0);
     }
     
@@ -26,8 +26,8 @@ public class MockPerson {
         return persons;
     }
 
-    public List<PersonVO> mockVOList() {
-        List<PersonVO> persons = new ArrayList<>();
+    public List<PersonVOv1> mockVOList() {
+        List<PersonVOv1> persons = new ArrayList<>();
         for (int i = 0; i < 14; i++) {
             persons.add(mockVO(i));
         }
@@ -44,8 +44,8 @@ public class MockPerson {
         return person;
     }
 
-    public PersonVO mockVO(Integer number) {
-        PersonVO person = new PersonVO();
+    public PersonVOv1 mockVO(Integer number) {
+        PersonVOv1 person = new PersonVOv1();
         person.setAddress("Addres Test" + number);
         person.setFirstName("First Name Test" + number);
         person.setGender(((number % 2)==0) ? "Male" : "Female");

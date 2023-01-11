@@ -15,22 +15,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gustavo.demo.data.vo.v1.PersonVO;
-import com.gustavo.demo.services.PersonServices;
+import com.gustavo.demo.data.vo.v1.PersonVOv1;
+import com.gustavo.demo.services.PersonServicesV1;
 
 
 @RestController
-@RequestMapping("/person")
-public class PersonController {
+@RequestMapping("v1/person")
+public class PersonControllerV1 {
 
     // private PersonServices service = new PersonServices();
     @Autowired
-    private PersonServices service;
+    private PersonServicesV1 service;
 
     @GetMapping(
         produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public List<PersonVO> findAll() throws Exception  {
+    public List<PersonVOv1> findAll() throws Exception  {
         return service.findAll();
     }
 
@@ -38,7 +38,7 @@ public class PersonController {
         value = "/{id}", 
         produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public PersonVO findById( @PathVariable(value = "id") Long id ) throws Exception  {
+    public PersonVOv1 findById( @PathVariable(value = "id") Long id ) throws Exception  {
         return service.findByID(id);
     }    
 
@@ -47,7 +47,7 @@ public class PersonController {
         consumes = MediaType.APPLICATION_JSON_VALUE, 
         produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public PersonVO create(@RequestBody PersonVO person) throws Exception  {
+    public PersonVOv1 create(@RequestBody PersonVOv1 person) throws Exception  {
         return service.create(person);
     }
 
@@ -56,7 +56,7 @@ public class PersonController {
         consumes = MediaType.APPLICATION_JSON_VALUE, 
         produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public PersonVO update(@RequestBody PersonVO person) throws Exception  {
+    public PersonVOv1 update(@RequestBody PersonVOv1 person) throws Exception  {
         return service.update(person);
     }
 

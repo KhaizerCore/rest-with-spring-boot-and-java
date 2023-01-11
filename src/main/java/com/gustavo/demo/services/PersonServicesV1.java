@@ -6,50 +6,50 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gustavo.demo.data.vo.v1.PersonVO;
+import com.gustavo.demo.data.vo.v1.PersonVOv1;
 import com.gustavo.demo.exceptions.ResourceNotFoundException;
 import com.gustavo.demo.mapper.DozerMapper;
 import com.gustavo.demo.model.Person;
 import com.gustavo.demo.repositories.PersonRepository;
 
 @Service
-public class PersonServices {
+public class PersonServicesV1 {
 
-    private Logger logger = Logger.getLogger(PersonServices.class.getName());
+    private Logger logger = Logger.getLogger(PersonServicesV1.class.getName());
 
     @Autowired
     private PersonRepository repository;
     
-    public List<PersonVO> findAll(){
+    public List<PersonVOv1> findAll(){
         logger.info("Find all people!");
 
         List<Person> listPerson = repository.findAll();        
 
-        return DozerMapper.parseListObjects(listPerson, PersonVO.class);
+        return DozerMapper.parseListObjects(listPerson, PersonVOv1.class);
     }
 
-    public PersonVO findByID(Long id){
+    public PersonVOv1 findByID(Long id){
         logger.info("Find one person!");
 
         Person person = repository.findById(id).orElseThrow(
             () -> new ResourceNotFoundException("No records found for this ID!")
         );
 
-        return DozerMapper.parseObject(person, PersonVO.class); 
+        return DozerMapper.parseObject(person, PersonVOv1.class); 
     }
 
-    public PersonVO create(PersonVO person){
-        logger.info("Creating one person");
+    public PersonVOv1 create(PersonVOv1 person){
+        logger.info("Creating one person with v1!");
 
         return DozerMapper.parseObject(
             repository.save(
                 DozerMapper.parseObject(person, Person.class)
             ),
-            PersonVO.class
+            PersonVOv1.class
         );
     }
 
-    public PersonVO update(PersonVO personVO){
+    public PersonVOv1 update(PersonVOv1 personVO){
         logger.info("Updating one person");
 
         var person = DozerMapper.parseObject(personVO, Person.class);
@@ -65,7 +65,7 @@ public class PersonServices {
 
         return DozerMapper.parseObject(
             repository.save(entity),
-            PersonVO.class
+            PersonVOv1.class
         );
     }
 
