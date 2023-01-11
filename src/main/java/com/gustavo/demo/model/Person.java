@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 public class Person implements Serializable{
 
     private static final long serialVersionUID = 1L;
-    
+    //commenting for diff purposes so i can test branch properly
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
