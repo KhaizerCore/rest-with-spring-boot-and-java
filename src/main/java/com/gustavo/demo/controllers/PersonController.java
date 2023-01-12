@@ -20,7 +20,7 @@ import com.gustavo.demo.services.PersonServices;
 
 
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/api/person/v1")
 public class PersonController {
 
     // private PersonServices service = new PersonServices();
