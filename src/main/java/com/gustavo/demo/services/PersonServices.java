@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.gustavo.demo.controllers.PersonController;
 import com.gustavo.demo.data.vo.v1.PersonVO;
+import com.gustavo.demo.exceptions.RequiredObjectIsNullException;
 import com.gustavo.demo.exceptions.ResourceNotFoundException;
 import com.gustavo.demo.mapper.DozerMapper;
 import com.gustavo.demo.model.Person;
@@ -42,6 +43,9 @@ public class PersonServices {
     }
 
     public PersonVO findByID(Long id) throws Exception{
+        
+        if (id == null) throw new RequiredObjectIsNullException();
+
         logger.info("Find one person!");
 
         Person entity = repository.findById(id).orElseThrow(
@@ -60,6 +64,9 @@ public class PersonServices {
     }
 
     public PersonVO create(PersonVO person) throws Exception{
+        
+        if (person == null) throw new RequiredObjectIsNullException();
+
         logger.info("Creating one person");
 
         PersonVO personVO = DozerMapper.parseObject(
@@ -79,6 +86,9 @@ public class PersonServices {
     }
 
     public PersonVO update(PersonVO personVO) throws Exception{
+
+        if (personVO == null) throw new RequiredObjectIsNullException();
+
         logger.info("Updating one person");
 
         var person = DozerMapper.parseObject(personVO, Person.class);
@@ -107,6 +117,9 @@ public class PersonServices {
     }
 
     public void delete(Long id){
+
+        if (id == null) throw new RequiredObjectIsNullException();
+
         logger.info("Deleting one person!");
 
         var entity = repository.findById(id).orElseThrow(
