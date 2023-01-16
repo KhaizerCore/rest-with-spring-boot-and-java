@@ -21,8 +21,13 @@ public class BookServices {
     private BookRepository repository;
 
     public BookVO findByID(Integer id){
+
+        Book bookEntity = repository.findById(id).orElseThrow(() -> {
+            throw new ResourceNotFoundException("Invalid Book Id");
+        });
+
         return DozerMapper.parseObject(
-            repository.findById(id),
+            bookEntity,
             BookVO.class
         );
     }

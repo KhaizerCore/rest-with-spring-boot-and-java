@@ -1,20 +1,18 @@
 package com.gustavo.demo.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "book")
-public class Book {
+@Table(name = "books")
+public class Book implements Serializable{
 
     private static final long serialVersionUID = 1L;
 

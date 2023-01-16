@@ -6,8 +6,10 @@ import java.util.Date;
 import org.springframework.hateoas.RepresentationModel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.github.dozermapper.core.Mapping;
 
+@JsonPropertyOrder({"id", "launch_date", "price", "title"})
 public class BookVO extends RepresentationModel<BookVO> implements Serializable{
     
     private static final long serialVersionUID = 1L;
@@ -20,7 +22,7 @@ public class BookVO extends RepresentationModel<BookVO> implements Serializable{
 
     private String author;
 
-    private Date launch_date;
+    private Date launchDate;
 
     private Double price;
 
@@ -46,12 +48,12 @@ public class BookVO extends RepresentationModel<BookVO> implements Serializable{
         this.author = author;
     }
 
-    public Date getLaunch_date() {
-        return launch_date;
+    public Date getLaunchDate() {
+        return launchDate;
     }
 
-    public void setLaunch_date(Date launch_date) {
-        this.launch_date = launch_date;
+    public void setLaunchDate(Date launchDate) {
+        this.launchDate = launchDate;
     }
 
     public Double getPrice() {
@@ -76,7 +78,7 @@ public class BookVO extends RepresentationModel<BookVO> implements Serializable{
         int result = super.hashCode();
         result = prime * result + ((key == null) ? 0 : key.hashCode());
         result = prime * result + ((author == null) ? 0 : author.hashCode());
-        result = prime * result + ((launch_date == null) ? 0 : launch_date.hashCode());
+        result = prime * result + ((launchDate == null) ? 0 : launchDate.hashCode());
         result = prime * result + ((price == null) ? 0 : price.hashCode());
         result = prime * result + ((title == null) ? 0 : title.hashCode());
         return result;
@@ -101,10 +103,10 @@ public class BookVO extends RepresentationModel<BookVO> implements Serializable{
                 return false;
         } else if (!author.equals(other.author))
             return false;
-        if (launch_date == null) {
-            if (other.launch_date != null)
+        if (launchDate == null) {
+            if (other.launchDate != null)
                 return false;
-        } else if (!launch_date.equals(other.launch_date))
+        } else if (!launchDate.equals(other.launchDate))
             return false;
         if (price == null) {
             if (other.price != null)
@@ -118,6 +120,8 @@ public class BookVO extends RepresentationModel<BookVO> implements Serializable{
             return false;
         return true;
     }
+
+
 
     
 }

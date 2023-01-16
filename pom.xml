@@ -17,7 +17,7 @@
 		<java.version>19</java.version>
 		<!-- <dozer.version>6.4.0</dozer.version> -->
 		<dozer.version>6.4.0</dozer.version>
-		<srpringdoc.version>2.0.0</srpringdoc.version>
+		<!-- <srpringdoc.version>2.0.0</srpringdoc.version> -->
 	</properties>
 	<dependencies>
 		
