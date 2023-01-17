@@ -50,7 +50,8 @@ public class PersonController {
                     @Content(
                         mediaType = CustomMediaType.APPLICATION_JSON, 
                         array = @ArraySchema(schema = @Schema(implementation = PersonVO.class)))
-                }),
+                }
+            ),
             @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
             @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
             @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
@@ -78,7 +79,7 @@ public class PersonController {
             @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
             @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
             @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
-            @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
+            @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
         }
     )
     public PersonVO findById( @PathVariable(value = "id") Long id ) throws Exception  {
