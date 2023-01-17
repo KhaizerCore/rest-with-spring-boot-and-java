@@ -16,8 +16,6 @@ import com.gustavo.demo.repositories.BookRepository;
 @Service
 public class BookServices {
 
-    private Logger logger = Logger.getLogger(PersonServices.class.getName());
-
     @Autowired
     private BookRepository repository;
 
