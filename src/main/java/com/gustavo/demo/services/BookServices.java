@@ -1,6 +1,7 @@
 package com.gustavo.demo.services;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +15,18 @@ import com.gustavo.demo.repositories.BookRepository;
 
 @Service
 public class BookServices {
-    
-    private static final long serialVersionUID = 1L; 
+
+    private Logger logger = Logger.getLogger(PersonServices.class.getName());
 
     @Autowired
     private BookRepository repository;
+
+    public List<BookVO> findAll(){
+        return DozerMapper.parseListObjects(
+            repository.findAll(),
+            BookVO.class
+        );
+    }
 
     public BookVO findByID(Integer id){
 
@@ -28,13 +36,6 @@ public class BookServices {
 
         return DozerMapper.parseObject(
             bookEntity,
-            BookVO.class
-        );
-    }
-
-    public List<BookVO> findAll(){
-        return DozerMapper.parseListObjects(
-            repository.findAll(),
             BookVO.class
         );
     }
@@ -56,7 +57,15 @@ public class BookServices {
             throw new ResourceNotFoundException("Invalid Book Id");
         });
 
-        return DozerMapper.parseObject(bookEntity, BookVO.class);
+        if (bookVO.getAuthor() != null) bookEntity.setAuthor(bookVO.getAuthor());
+        if (bookVO.getLaunchDate() != null) bookEntity.setLaunchDate(bookVO.getLaunchDate());
+        if (bookVO.getPrice() != null) bookEntity.setPrice(bookVO.getPrice());
+        if (bookVO.getTitle() != null) bookEntity.setTitle(bookVO.getTitle());
+
+        return DozerMapper.parseObject(
+            repository.save(bookEntity), 
+            BookVO.class
+        );
     }
 
     public void delete(Integer id){

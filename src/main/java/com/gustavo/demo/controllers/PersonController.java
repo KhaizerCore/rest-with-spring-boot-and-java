@@ -54,7 +54,7 @@ public class PersonController {
             @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
             @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
             @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
-            @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
+            @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
         }
     )
     public List<PersonVO> findAll() throws Exception  {
@@ -67,7 +67,7 @@ public class PersonController {
     )
     @Operation(
         summary = "Finds a Person", 
-        description = "Finds a Person", 
+        description = "Finds a Person",
         tags = {"Person"},
         responses = {
             @ApiResponse(

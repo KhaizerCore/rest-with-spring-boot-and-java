@@ -34,10 +34,6 @@ public class Book implements Serializable{
 
     Book(){}
 
-    public static long getSerialversionuid() {
-        return serialVersionUID;
-    }
-
     public Integer getId() {
         return id;
     }
