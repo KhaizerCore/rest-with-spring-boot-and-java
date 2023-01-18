@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Answers.valueOf;
 import static org.mockito.Mockito.when;
 
 import java.util.List;
@@ -22,7 +21,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.gustavo.demo.data.vo.v1.PersonVO;
 import com.gustavo.demo.exceptions.RequiredObjectIsNullException;
-import com.gustavo.demo.mapper.DozerMapper;
 import com.gustavo.demo.model.Person;
 import com.gustavo.demo.repositories.PersonRepository;
 import com.gustavo.demo.services.PersonServices;
